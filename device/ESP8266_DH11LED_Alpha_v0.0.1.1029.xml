@@ -1,0 +1,660 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="procedures_defnoreturn" id="1T;-DkS1tW6aJ`Mo{B4R" x="1048" y="-613">
+    <field name="NAME">mqtt</field>
+    <statement name="STACK">
+      <block type="controls_if" id="[*@YX)}j,H(stBto|N+@">
+        <mutation elseif="1"></mutation>
+        <value name="IF0">
+          <block type="logic_compare" id="gSG@p9W:?or~Gzijylpc">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="mqtt_topic" id="5292^ID%3iZ[{w84l.nT"></block>
+            </value>
+            <value name="B">
+              <block type="text" id="D0[_25Y9dd;]/w:S.y2p">
+                <field name="TEXT">sw/device</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="serial_print" id="C0xQvgiPnh)b,xjBu`%5">
+            <field name="SERIAL_ID">Serial</field>
+            <field name="NEW_LINE">TRUE</field>
+            <value name="CONTENT">
+              <block type="text_join" id="rpGn/*k!|UkH|+!_ctWG">
+                <mutation items="2"></mutation>
+                <value name="ADD0">
+                  <block type="text" id="wFbv=.mwdSXBG#YO*[GY">
+                    <field name="TEXT">Message:</field>
+                  </block>
+                </value>
+                <value name="ADD1">
+                  <block type="mqtt_msg" id="prNx:czCulkieB{)nfDo"></block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="controls_if" id="Cy;}:S!QzZ3t;.6Kbop[">
+                <mutation elseif="2"></mutation>
+                <value name="IF0">
+                  <block type="logic_compare" id="75ch=woV!BeC{FI641Rj">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="mqtt_msg" id="(;Vw)S()`lA%]hJ`Y!C["></block>
+                    </value>
+                    <value name="B">
+                      <block type="text" id="w]@%z.T7e]X5.xhE7yo3">
+                        <field name="TEXT">clientCmdOn</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="io_digitalwrite_var" id="2*8zrjJZEMY~UahCjyo]">
+                    <value name="PIN">
+                      <block type="io_allpins" id="YW?5QypZ*SS=bvBFMY7!">
+                        <field name="PIN">D1</field>
+                      </block>
+                    </value>
+                    <value name="STATE">
+                      <block type="io_highlow" id="}Ld}0Eah/p?~7cWH+=,O">
+                        <field name="STATE">HIGH</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="variables_set" id="(1c@a{}BmWqe@,0ga[9~">
+                        <field name="VAR">toggle</field>
+                        <value name="VALUE">
+                          <block type="logic_boolean" id="uYD9g`+=w_W=Sa+c/(s?">
+                            <field name="BOOL">TRUE</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="serial_print" id=")-L2u#0{.pnOw8qWzP~G">
+                            <field name="SERIAL_ID">Serial</field>
+                            <field name="NEW_LINE">TRUE</field>
+                            <value name="CONTENT">
+                              <block type="text" id="R%2FgQ}kEpn~NMIM(Q%K">
+                                <field name="TEXT">deviceStateOn</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="mqtt_publish" id="u8lRo`5Ox_3VJ05dN%H6">
+                                <value name="TOPIC">
+                                  <block type="text" id="Sd_%t{!ei90xh^~7NWbX">
+                                    <field name="TEXT">sw/device</field>
+                                  </block>
+                                </value>
+                                <value name="PAYLOAD">
+                                  <block type="text" id="O0kS49j,gh;8QNV,vezR">
+                                    <field name="TEXT">deviceStateOn</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <value name="IF1">
+                  <block type="logic_compare" id="`|3n_Kz,O;_1t9z{PA]8">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="mqtt_msg" id="IiezLVH1*UOB}47#@3%["></block>
+                    </value>
+                    <value name="B">
+                      <block type="text" id="G~r;Go!x)Oxwh1-2=yGJ">
+                        <field name="TEXT">clientCmdOff</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO1">
+                  <block type="io_digitalwrite_var" id="tj]b.[1TvKtH5-e)@s9n">
+                    <value name="PIN">
+                      <block type="io_allpins" id="BnQDYbayZWM,RFS0~#eh">
+                        <field name="PIN">D1</field>
+                      </block>
+                    </value>
+                    <value name="STATE">
+                      <block type="io_highlow" id="J:5}|xl!_BtW9*H(F}^W">
+                        <field name="STATE">LOW</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="variables_set" id="8+bkzNbWjU!?4!Rro|!1">
+                        <field name="VAR">toggle</field>
+                        <value name="VALUE">
+                          <block type="logic_boolean" id="+lzhI#p,Z3{ThW)aflW7">
+                            <field name="BOOL">FALSE</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="serial_print" id="`kS!MhK)u5]3[*lGUZ!A">
+                            <field name="SERIAL_ID">Serial</field>
+                            <field name="NEW_LINE">TRUE</field>
+                            <value name="CONTENT">
+                              <block type="text" id="NLNI#K`09m9!8-U{6[wK">
+                                <field name="TEXT">deviceStateOff</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="mqtt_publish" id="9(4FQw0PSG:W(rk(V,`%">
+                                <value name="TOPIC">
+                                  <block type="text" id="VD6i3UD6d/iJw{O]-`O}">
+                                    <field name="TEXT">sw/device</field>
+                                  </block>
+                                </value>
+                                <value name="PAYLOAD">
+                                  <block type="text" id="tN`;a8iGxTmY~XXfD*~j">
+                                    <field name="TEXT">deviceStateOff</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <value name="IF2">
+                  <block type="logic_compare" id="839iAiEjeKpBU(S5GeeL">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="mqtt_msg" id="oIwL#[~W6k+NPq|)1y=g"></block>
+                    </value>
+                    <value name="B">
+                      <block type="text" id="[nmh~@@fef{JJ-L1*Ri4">
+                        <field name="TEXT">clientConfirm</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO2">
+                  <block type="controls_if" id="bu%sA3dsxpF,-T@8ueFg">
+                    <mutation else="1"></mutation>
+                    <value name="IF0">
+                      <block type="logic_compare" id="_s/x#A[9xr~cf!c]L.{7">
+                        <field name="OP">EQ</field>
+                        <value name="A">
+                          <block type="variables_get" id="eyF%1@NSNqGYLGM8*ToV">
+                            <field name="VAR">toggle</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="logic_boolean" id="Q4yHcx[sh7Q4^`Z/aJ!m">
+                            <field name="BOOL">TRUE</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="serial_print" id="@BfVZf+S_?GZ).Mrcu~e">
+                        <field name="SERIAL_ID">Serial</field>
+                        <field name="NEW_LINE">TRUE</field>
+                        <value name="CONTENT">
+                          <block type="text" id="(+u6AFDzKs*XWBgO^q#V">
+                            <field name="TEXT">deviceStateOn</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="mqtt_publish" id="Q:_{ss5c_SE%7BjGsJnf">
+                            <value name="TOPIC">
+                              <block type="text" id="ZEr#_m~A-sIOk.6b3WOK">
+                                <field name="TEXT">sw/device</field>
+                              </block>
+                            </value>
+                            <value name="PAYLOAD">
+                              <block type="text" id="d[o@pC)HW4h};LH8?}f-">
+                                <field name="TEXT">deviceStateOn</field>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                    <statement name="ELSE">
+                      <block type="serial_print" id="4#v4gNp^4%vQa5idnwrE">
+                        <field name="SERIAL_ID">Serial</field>
+                        <field name="NEW_LINE">TRUE</field>
+                        <value name="CONTENT">
+                          <block type="text" id="K*x:Olo5fe9W_XVMQJB1">
+                            <field name="TEXT">deviceStateOff</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="mqtt_publish" id="fg5D*/4OoPy#efotgerm">
+                            <value name="TOPIC">
+                              <block type="text" id="|R.0gcSn_lPT7DyDe-[%">
+                                <field name="TEXT">sw/device</field>
+                              </block>
+                            </value>
+                            <value name="PAYLOAD">
+                              <block type="text" id="NvqOmK@C+cbKwVY6u+{d">
+                                <field name="TEXT">deviceStateOff</field>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <value name="IF1">
+          <block type="logic_compare" id="o#qpCV2YkF(wmkSXAdR}">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="mqtt_topic" id="+%WWZ8SD~y{CxKR-[11:"></block>
+            </value>
+            <value name="B">
+              <block type="text" id="2JS@g`}@Y{f[X(DC:1D+">
+                <field name="TEXT">th/device</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO1">
+          <block type="controls_if" id="M74e!,UaXDB?n(JtVZR0">
+            <value name="IF0">
+              <block type="logic_compare" id="0oX9q9H/cX.p=X~@lXO,">
+                <field name="OP">EQ</field>
+                <value name="A">
+                  <block type="mqtt_msg" id="_lcp!?@|nY2ci)@b^gsc"></block>
+                </value>
+                <value name="B">
+                  <block type="text" id="IZ-d4pmHf)eh*`dY6,AZ">
+                    <field name="TEXT">clientConfirm</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="serial_print" id="4~296Rvv^He/J+V15)kl">
+                <field name="SERIAL_ID">Serial</field>
+                <field name="NEW_LINE">TRUE</field>
+                <value name="CONTENT">
+                  <block type="text_join" id="wu_=k5(2^%d{gk;l;kTo">
+                    <mutation items="4"></mutation>
+                    <value name="ADD0">
+                      <block type="text" id="oZAMo=!8zX}MJi+HuUpk">
+                        <field name="TEXT">t</field>
+                      </block>
+                    </value>
+                    <value name="ADD1">
+                      <block type="DHT11_readTemp" id="+HSN?0GEqzzj^#XMsIm|">
+                        <value name="DATAPIN">
+                          <block type="io_allpins" id="Emdjat)X/3Rqq+i@=(Sm">
+                            <field name="PIN">D3</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="ADD2">
+                      <block type="text" id=":5K]jkVvEMI[G!IwO8.C">
+                        <field name="TEXT">h</field>
+                      </block>
+                    </value>
+                    <value name="ADD3">
+                      <block type="DHT11_readHumi" id="u-6a8P?wvz?D/qBHY4*L">
+                        <value name="DATAPIN">
+                          <block type="io_allpins" id="lToB@Th6{t%89Giv{UK*">
+                            <field name="PIN">D3</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="mqtt_publish" id="#d-*1~.t-,#nliWB6/E|">
+                    <value name="TOPIC">
+                      <block type="text" id="?ZLn.Tc:ez(2j]^ynECG">
+                        <field name="TEXT">th/device</field>
+                      </block>
+                    </value>
+                    <value name="PAYLOAD">
+                      <block type="text_join" id="B[?{[vFMd6Ra`}VFIB)K">
+                        <mutation items="4"></mutation>
+                        <value name="ADD0">
+                          <block type="text" id="15O-}[x(+9QjoFN22nB,">
+                            <field name="TEXT">t</field>
+                          </block>
+                        </value>
+                        <value name="ADD1">
+                          <block type="DHT11_readTemp" id="`=~lnLfE?~;{DYayDf{g">
+                            <value name="DATAPIN">
+                              <block type="io_allpins" id="T%A8~Zx?6fF@8Qx9Mdw+">
+                                <field name="PIN">D3</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <value name="ADD2">
+                          <block type="text" id="Td@~{a(mMy(6wLxnk.q*">
+                            <field name="TEXT">h</field>
+                          </block>
+                        </value>
+                        <value name="ADD3">
+                          <block type="DHT11_readHumi" id="iHR{M.C,/MC#h]Wrdnc}">
+                            <value name="DATAPIN">
+                              <block type="io_allpins" id="JiGU..fL1=N,]FN,E48!">
+                                <field name="PIN">D3</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_setup" id="Jv47t_b1Xz~Hj0VpM@UD" x="-28" y="-543">
+    <statement name="SETUP_FUNC">
+      <block type="esp8266_sta_setup" id="BE+k*Y1q0@;SVe9IRSE+">
+        <value name="SSID">
+          <block type="text" id="13fG9^MYIM4gPt]w(L=d">
+            <field name="TEXT">ensan256</field>
+          </block>
+        </value>
+        <value name="PINCODE">
+          <block type="text" id="`HH2yw)liZry!bkq=NHt">
+            <field name="TEXT">935zxc662</field>
+          </block>
+        </value>
+        <next>
+          <block type="time_delay" id="lRMF??x.`1]6DsE{8f)Y">
+            <value name="DELAY_TIME_MILI">
+              <block type="math_number" id=",vW[#eG?Y4:wc1]jgh[I">
+                <field name="NUM">5000</field>
+              </block>
+            </value>
+            <next>
+              <block type="serial_setup" id="_a)!U,KF|~tJNjzs!DF+">
+                <field name="SERIAL_ID">Serial</field>
+                <field name="SPEED">9600</field>
+                <next>
+                  <block type="serial_print" id="^`%JGbBD*dj]q])D@AgO">
+                    <field name="SERIAL_ID">Serial</field>
+                    <field name="NEW_LINE">TRUE</field>
+                    <value name="CONTENT">
+                      <block type="text_join" id="b629moGDAD!j8eg{_1^q">
+                        <mutation items="2"></mutation>
+                        <value name="ADD0">
+                          <block type="text" id="w2(Amh.T2Y?A{1@ERp@G">
+                            <field name="TEXT">IP:</field>
+                          </block>
+                        </value>
+                        <value name="ADD1">
+                          <block type="esp8266_localIP" id="Aa*!fF~1WU(Zl@7y5f)n"></block>
+                        </value>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="mqtt_setup" id=":ER}aDB~)A{{Dq~*6my|">
+                        <field name="PORT">1883</field>
+                        <value name="SERVER">
+                          <block type="text" id="ocZxr[/SjZfUzyMYWA`k">
+                            <field name="TEXT">192.168.100.3</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="mqtt_bind" id="R~(9|Jul}K.15^5a~m|]">
+                            <field name="FUNCNAME">mqtt</field>
+                            <next>
+                              <block type="io_digitalwrite_var" id="+GOIJ^{}gf?WR=w=I,Mw">
+                                <value name="PIN">
+                                  <block type="io_allpins" id="q^+Th|_9wQ)|^b^}4.0?">
+                                    <field name="PIN">D1</field>
+                                  </block>
+                                </value>
+                                <value name="STATE">
+                                  <block type="io_highlow" id="O*F~y4F{V[!E7+0c+6r6">
+                                    <field name="STATE">LOW</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="variables_init" id="7N`3{DW7h(5[R3:fU8h)">
+                                    <field name="VAR">toggle</field>
+                                    <value name="VALUE">
+                                      <block type="logic_boolean" id="gNEtluNW~{OX(b69PZWe">
+                                        <field name="BOOL">FALSE</field>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="variables_init" id="Y6V[Zc91n`!l-Bz8(3.n">
+                                        <field name="VAR">lastTime</field>
+                                        <value name="VALUE">
+                                          <block type="math_number" id="9h+h/OF4e,eFAPV3N@P,">
+                                            <field name="NUM">0</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="-26" y="-164">
+    <statement name="LOOP_FUNC">
+      <block type="controls_if" id="=e5`rT]d8^shpW;=:fMz">
+        <mutation else="1"></mutation>
+        <value name="IF0">
+          <block type="logic_negate" id="@cv-GtQ1Q1!8chFpoWb8">
+            <value name="BOOL">
+              <block type="mqtt_connected" id="@N.*J!YB,-GOP)ZM2wHo"></block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="controls_waitUntil" id="{#V5ioN=Nqzr4*P{CUTA">
+            <value name="BOOL">
+              <block type="mqtt_connect" id="%vaa%q0DmmG3]5R^_(^V">
+                <value name="NAME">
+                  <block type="text" id="6oV6y@159@72h*rhDx?*">
+                    <field name="TEXT"></field>
+                  </block>
+                </value>
+                <value name="ID">
+                  <block type="text" id="[a/Ry)rWqeG;*E5N0Y}G">
+                    <field name="TEXT"></field>
+                  </block>
+                </value>
+                <value name="PWD">
+                  <block type="text" id="}}80LS].K#~:tMnw,q}k">
+                    <field name="TEXT"></field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="serial_print" id="^CKdq;sEP/K**kHMburL">
+                <field name="SERIAL_ID">Serial</field>
+                <field name="NEW_LINE">TRUE</field>
+                <value name="CONTENT">
+                  <block type="text_join" id="tUS*j4uA%@~WIcJPKHXw">
+                    <mutation items="2"></mutation>
+                    <value name="ADD0">
+                      <block type="text" id="S5De{)Dh_dK/1Bq~rmc^">
+                        <field name="TEXT">Connected:</field>
+                      </block>
+                    </value>
+                    <value name="ADD1">
+                      <block type="text" id="py2#NoE8%@SR:zS7#Ocg">
+                        <field name="TEXT">已連上MQTT伺服器</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="mqtt_subscribe" id="XqDCFMquMQ6|@4~VvK9`">
+                    <value name="CHANNEL">
+                      <block type="text" id="^[6iMMo%@m~|uM[n7O_I">
+                        <field name="TEXT">sw/device</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="mqtt_subscribe" id="#mTVE~plE`YJ`pZ68^cI">
+                        <value name="CHANNEL">
+                          <block type="text" id="/N[MA/1#-Mqmz(Y0B~rE">
+                            <field name="TEXT">th/device</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <statement name="ELSE">
+          <block type="mqtt_run" id="pP*oU/w:ki`xs31wb8/h">
+            <next>
+              <block type="controls_if" id="e]evFg-zk!EwzJ[]6e6*">
+                <value name="IF0">
+                  <block type="logic_compare" id="mL.}zjGZE=]p5%7tltDp">
+                    <field name="OP">GT</field>
+                    <value name="A">
+                      <block type="math_arithmetic" id="(xMJTT#!2G^*jz~pZY,a">
+                        <field name="OP">MINUS</field>
+                        <value name="A">
+                          <block type="time_millis" id="6M5T:qR/l0,;U@Aq[rhX"></block>
+                        </value>
+                        <value name="B">
+                          <block type="variables_get" id="PIHjK[a=v7t{ITcWhGGU">
+                            <field name="VAR">lastTime</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="tj~sy0;d3[__-rwgN{K}">
+                        <field name="NUM">30000</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="serial_print" id="2+l[gFTpT@dj0i^-avd;">
+                    <field name="SERIAL_ID">Serial</field>
+                    <field name="NEW_LINE">TRUE</field>
+                    <value name="CONTENT">
+                      <block type="text_join" id="_=#IQh4L,i^ubchT)UJ|">
+                        <mutation items="4"></mutation>
+                        <value name="ADD0">
+                          <block type="text" id="nktl]Sj{v,;mf~-V*%v5">
+                            <field name="TEXT">t</field>
+                          </block>
+                        </value>
+                        <value name="ADD1">
+                          <block type="DHT11_readTemp" id="}V,mLt_r+ovfpGD4XvFm">
+                            <value name="DATAPIN">
+                              <block type="io_allpins" id="QR#fmhH5,%4.O7Ay:iuA">
+                                <field name="PIN">D3</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <value name="ADD2">
+                          <block type="text" id="g|[VbG#p!btgg38aoK8l">
+                            <field name="TEXT">h</field>
+                          </block>
+                        </value>
+                        <value name="ADD3">
+                          <block type="DHT11_readHumi" id="p+--!Icu@j{+1i@i/ah}">
+                            <value name="DATAPIN">
+                              <block type="io_allpins" id="{[Zz,dZu4rE}:T9@088%">
+                                <field name="PIN">D3</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="mqtt_publish" id="|*bK@YW#8dU?j6VmG3-?">
+                        <value name="TOPIC">
+                          <block type="text" id="ScYW}sq/y;/0F11fO3}d">
+                            <field name="TEXT">th/device</field>
+                          </block>
+                        </value>
+                        <value name="PAYLOAD">
+                          <block type="text_join" id="s.6.ed:te*N6c!@lJC%X">
+                            <mutation items="4"></mutation>
+                            <value name="ADD0">
+                              <block type="text" id="BmMei4[YgA!Rc[`ys8W0">
+                                <field name="TEXT">t</field>
+                              </block>
+                            </value>
+                            <value name="ADD1">
+                              <block type="DHT11_readTemp" id="]zH6t{b)5ZNEO|mm}lTU">
+                                <value name="DATAPIN">
+                                  <block type="io_allpins" id="M.NjC)/ZdXs*KD)bWMDs">
+                                    <field name="PIN">D3</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <value name="ADD2">
+                              <block type="text" id="o59JV`=Z(RgPTTI)RZ.b">
+                                <field name="TEXT">h</field>
+                              </block>
+                            </value>
+                            <value name="ADD3">
+                              <block type="DHT11_readHumi" id="jw:7M=AD@zO@-m^bJAgq">
+                                <value name="DATAPIN">
+                                  <block type="io_allpins" id="Q|XpU-w~Kl@ePk_TZhAt">
+                                    <field name="PIN">D3</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="variables_set" id="8D{IuPp]H`|PLc{~0C`T">
+                            <field name="VAR">lastTime</field>
+                            <value name="VALUE">
+                              <block type="time_millis" id="N,mp|q)BvB/b9#C11U*1"></block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+</xml>
