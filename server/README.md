@@ -1,0 +1,1 @@
+### 詳細說明請參考[Server架構說明](https://github.com/LiuAnSheng12/Remotely-query-temperature-and-humidity-information-and-operate-the-Led-light-switch/blob/main/server/Server%E6%9E%B6%E6%A7%8B%E8%AA%AA%E6%98%8E.docx?raw=true)
