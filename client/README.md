@@ -1,0 +1,1 @@
+### 詳細說明請參考[Client端運作說明](https://github.com/LiuAnSheng12/Remotely-query-temperature-and-humidity-information-and-operate-the-Led-light-switch/blob/main/client/Client%E7%AB%AF%E9%81%8B%E4%BD%9C%E8%AA%AA%E6%98%8E.docx?raw=true)
