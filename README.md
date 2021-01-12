@@ -7,7 +7,7 @@
 ---
 分為三個角色Server、Client、Device，之間的關係如下圖
 
-![](https://github.com/LiuAnSheng12/Remotely-query-temperature-and-humidity-information-and-operate-the-Led-light-switch/blob/main/Architecture%20diagram.png)
+![](https://github.com/LiuAnSheng12/Remotely-query-temperature-and-humidity-information-and-operate-the-Led-light-switch/blob/main/png/Architecture%20diagram.png)
 
 組成
 ---
