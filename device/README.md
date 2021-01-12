@@ -1,0 +1,1 @@
+### 詳細說明請參考[Device程式架構](https://github.com/LiuAnSheng12/Remotely-query-temperature-and-humidity-information-and-operate-the-Led-light-switch/blob/main/device/Device%E7%A8%8B%E5%BC%8F%E6%9E%B6%E6%A7%8B.docx?raw=true)
