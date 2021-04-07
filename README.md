@@ -11,4 +11,4 @@
 
 組成
 ---
-[Server](https://github.com/LiuAnSheng12/Remotely-query-temperature-and-humidity-information-and-operate-the-Led-light-switch/tree/main/server)、[Client](https://github.com/LiuAnSheng12/Remotely-query-temperature-and-humidity-information-and-operate-the-Led-light-switch/tree/main/client)、[Device](https://github.com/LiuAnSheng12/Remotely-query-temperature-and-humidity-information-and-operate-the-Led-light-switch/tree/main/device)三個資料夾裡有各自的說明及程式碼:
+[Server](https://github.com/LiuAnSheng12/Remotely-query-temperature-and-humidity-information-and-operate-the-Led-light-switch/tree/main/server)、[Client](https://github.com/LiuAnSheng12/Remotely-query-temperature-and-humidity-information-and-operate-the-Led-light-switch/tree/main/client)、[Device](https://github.com/LiuAnSheng12/Remotely-query-temperature-and-humidity-information-and-operate-the-Led-light-switch/tree/main/device)三個檔案裡有各自的說明及程式碼:
